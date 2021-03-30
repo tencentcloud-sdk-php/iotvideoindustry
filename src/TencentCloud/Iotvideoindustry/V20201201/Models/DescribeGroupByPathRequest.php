@@ -20,18 +20,18 @@ use TencentCloud\Common\AbstractModel;
 /**
  * DescribeGroupByPath请求参数结构体
  *
- * @method string getGroupPath() 获取分组路径
- * @method void setGroupPath(string $GroupPath) 设置分组路径
+ * @method string getGroupPath() 获取分组路径，格式为/aaa(/bbb/ccc)
+ * @method void setGroupPath(string $GroupPath) 设置分组路径，格式为/aaa(/bbb/ccc)
  */
 class DescribeGroupByPathRequest extends AbstractModel
 {
     /**
-     * @var string 分组路径
+     * @var string 分组路径，格式为/aaa(/bbb/ccc)
      */
     public $GroupPath;
 
     /**
-     * @param string $GroupPath 分组路径
+     * @param string $GroupPath 分组路径，格式为/aaa(/bbb/ccc)
      */
     function __construct()
     {
