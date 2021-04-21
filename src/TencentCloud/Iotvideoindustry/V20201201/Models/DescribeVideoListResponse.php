@@ -22,8 +22,10 @@ use TencentCloud\Common\AbstractModel;
  *
  * @method integer getTotalCount() 获取总数
  * @method void setTotalCount(integer $TotalCount) 设置总数
- * @method RecordTaskItem getVideoList() 获取录像详情列表
- * @method void setVideoList(RecordTaskItem $VideoList) 设置录像详情列表
+ * @method RecordTaskItem getVideoList() 获取已废弃
+ * @method void setVideoList(RecordTaskItem $VideoList) 设置已废弃
+ * @method array getRecordList() 获取录像详情列表
+ * @method void setRecordList(array $RecordList) 设置录像详情列表
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
@@ -35,9 +37,14 @@ class DescribeVideoListResponse extends AbstractModel
     public $TotalCount;
 
     /**
-     * @var RecordTaskItem 录像详情列表
+     * @var RecordTaskItem 已废弃
      */
     public $VideoList;
+
+    /**
+     * @var array 录像详情列表
+     */
+    public $RecordList;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -46,7 +53,8 @@ class DescribeVideoListResponse extends AbstractModel
 
     /**
      * @param integer $TotalCount 总数
-     * @param RecordTaskItem $VideoList 录像详情列表
+     * @param RecordTaskItem $VideoList 已废弃
+     * @param array $RecordList 录像详情列表
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -69,6 +77,15 @@ class DescribeVideoListResponse extends AbstractModel
         if (array_key_exists("VideoList",$param) and $param["VideoList"] !== null) {
             $this->VideoList = new RecordTaskItem();
             $this->VideoList->deserialize($param["VideoList"]);
+        }
+
+        if (array_key_exists("RecordList",$param) and $param["RecordList"] !== null) {
+            $this->RecordList = [];
+            foreach ($param["RecordList"] as $key => $value){
+                $obj = new RecordTaskItem();
+                $obj->deserialize($value);
+                array_push($this->RecordList, $obj);
+            }
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {
