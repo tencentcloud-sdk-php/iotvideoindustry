@@ -18,52 +18,44 @@ namespace TencentCloud\Iotvideoindustry\V20201201\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * GetRecordDatesByDev请求参数结构体
+ * DescribeIPCChannels请求参数结构体
  *
- * @method string getDeviceId() 获取设备唯一标识
- * @method void setDeviceId(string $DeviceId) 设置设备唯一标识
  * @method integer getOffset() 获取偏移量，默认0
  * @method void setOffset(integer $Offset) 设置偏移量，默认0
- * @method integer getLimit() 获取限制量，默认200
- * @method void setLimit(integer $Limit) 设置限制量，默认200
- * @method string getChannelId() 获取通道唯一标识
- * @method void setChannelId(string $ChannelId) 设置通道唯一标识
- * @method integer getType() 获取1: 云端录制 2: 本地录制
- * @method void setType(integer $Type) 设置1: 云端录制 2: 本地录制
+ * @method integer getLimit() 获取限制，默认0
+ * @method void setLimit(integer $Limit) 设置限制，默认0
+ * @method string getDeviceId() 获取设备Id
+ * @method void setDeviceId(string $DeviceId) 设置设备Id
+ * @method array getChannelTypes() 获取通道类型 	4: 国标NVR通道 5:  国标VMS通道 6: 国标IPC通道
+ * @method void setChannelTypes(array $ChannelTypes) 设置通道类型 	4: 国标NVR通道 5:  国标VMS通道 6: 国标IPC通道
  */
-class GetRecordDatesByDevRequest extends AbstractModel
+class DescribeIPCChannelsRequest extends AbstractModel
 {
-    /**
-     * @var string 设备唯一标识
-     */
-    public $DeviceId;
-
     /**
      * @var integer 偏移量，默认0
      */
     public $Offset;
 
     /**
-     * @var integer 限制量，默认200
+     * @var integer 限制，默认0
      */
     public $Limit;
 
     /**
-     * @var string 通道唯一标识
+     * @var string 设备Id
      */
-    public $ChannelId;
+    public $DeviceId;
 
     /**
-     * @var integer 1: 云端录制 2: 本地录制
+     * @var array 通道类型 	4: 国标NVR通道 5:  国标VMS通道 6: 国标IPC通道
      */
-    public $Type;
+    public $ChannelTypes;
 
     /**
-     * @param string $DeviceId 设备唯一标识
      * @param integer $Offset 偏移量，默认0
-     * @param integer $Limit 限制量，默认200
-     * @param string $ChannelId 通道唯一标识
-     * @param integer $Type 1: 云端录制 2: 本地录制
+     * @param integer $Limit 限制，默认0
+     * @param string $DeviceId 设备Id
+     * @param array $ChannelTypes 通道类型 	4: 国标NVR通道 5:  国标VMS通道 6: 国标IPC通道
      */
     function __construct()
     {
@@ -78,10 +70,6 @@ class GetRecordDatesByDevRequest extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("DeviceId",$param) and $param["DeviceId"] !== null) {
-            $this->DeviceId = $param["DeviceId"];
-        }
-
         if (array_key_exists("Offset",$param) and $param["Offset"] !== null) {
             $this->Offset = $param["Offset"];
         }
@@ -90,12 +78,12 @@ class GetRecordDatesByDevRequest extends AbstractModel
             $this->Limit = $param["Limit"];
         }
 
-        if (array_key_exists("ChannelId",$param) and $param["ChannelId"] !== null) {
-            $this->ChannelId = $param["ChannelId"];
+        if (array_key_exists("DeviceId",$param) and $param["DeviceId"] !== null) {
+            $this->DeviceId = $param["DeviceId"];
         }
 
-        if (array_key_exists("Type",$param) and $param["Type"] !== null) {
-            $this->Type = $param["Type"];
+        if (array_key_exists("ChannelTypes",$param) and $param["ChannelTypes"] !== null) {
+            $this->ChannelTypes = $param["ChannelTypes"];
         }
     }
 }
